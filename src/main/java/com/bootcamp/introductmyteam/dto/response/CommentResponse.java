@@ -9,11 +9,13 @@ import lombok.Getter;
 @Getter
 public class CommentResponse {
 
+    private Long id;
+
     private String content;
 
     private String nickname;
 
     public static CommentResponse from(Comment comment) {
-        return new CommentResponse(comment.getContent(), comment.getNickname());
+        return new CommentResponse(comment.getId(), comment.getContent(), comment.getNickname());
     }
 }
