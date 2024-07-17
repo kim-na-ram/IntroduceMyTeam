@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로젝트 팀 페이지</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -91,11 +92,11 @@
 </div>
 <div class="navigation">
     <div Onclick="openclose1()" class="label">팀 소개</div>
-    <div class="teamintroduce" id="teamintroduce">
+    <div class="teamintroduce" id="teamintroduce" style = "display: none;">
         <p>개발이 처음인 사람들이 모여서 프로젝트를 만듭니다!</p>
     </div>
     <div Onclick="openclose2()" class="label">팀 규칙</div>
-    <div class="teamrules" id="teamrules">
+    <div class="teamrules" id="teamrules" style = "display: none;">
         <p>1. 알고리즘&코드카타(개인) 09:00 ~ 10:00</p>
         <p>2. 개인학습 시간 : 10:00 ~ 12:00</p>
         <p>3. 점심시간 : 12:00 ~ 13:00</p>
