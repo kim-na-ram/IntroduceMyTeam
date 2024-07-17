@@ -1,6 +1,7 @@
 package com.bootcamp.introductmyteam.domain;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
@@ -22,6 +23,7 @@ public class Comment {
 
     protected Comment() {}
 
+    @Builder
     private Comment(String content, String nickname, String password, Article article) {
         this.content = content;
         this.nickname = nickname;
