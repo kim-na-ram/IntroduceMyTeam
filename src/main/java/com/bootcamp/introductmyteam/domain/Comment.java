@@ -34,4 +34,8 @@ public class Comment {
     public static Comment of(String content, String nickname, String password, Article article) {
         return new Comment(content, nickname, password, article);
     }
+
+    public void updateContent(String content) {
+        this.content = content;
+    }
 }
