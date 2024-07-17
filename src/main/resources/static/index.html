@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로젝트 팀 페이지</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+        * {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -73,54 +83,108 @@
             background-color: #eaeaea;
             object-fit: cover;
         }
+        
+        .team-member {
+            width: 120px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .team-member a {
+            text-decoration: none;
+        }
+
+        .position {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .name {
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #333;
+            text-align: center;
+            text-decoration: none;
+        }
     </style>
     <script>
         function openclose1() {
             $('#teamintroduce').toggle();
         }
+
         function openclose2() {
             $('#teamrules').toggle();
         }
     </script>
 </head>
-<body>
-<div class="header">
-    <h1>개발은처음이조</h1>
-</div>
-<div class="team-image">
-    <img src="image/14조.png" alt="팀 대표 이미지" class="team-image">
-</div>
-<div class="navigation">
-    <div Onclick="openclose1()" class="label">팀 소개</div>
-    <div class="teamintroduce" id="teamintroduce" style = "display: none;">
-        <p>개발이 처음인 사람들이 모여서 프로젝트를 만듭니다!</p>
-    </div>
-    <div Onclick="openclose2()" class="label">팀 규칙</div>
-    <div class="teamrules" id="teamrules" style = "display: none;">
-        <p>1. 알고리즘&코드카타(개인) 09:00 ~ 10:00</p>
-        <p>2. 개인학습 시간 : 10:00 ~ 12:00</p>
-        <p>3. 점심시간 : 12:00 ~ 13:00</p>
-        <p>4. 저녁시간 : 18:00 ~ 19:00</p>
-        <p>5. 팀 프로젝트 : 13:00 ~ 21:00</p>
-    </div>
-</div>
-<div class="team-members">
-    <a href="member/naram.html" class="team-member">
-        <img src="image/naram.jpg" alt="김나람" class="photo">
-    </a>
-    <a href="member/bang.html" class="team-member">
-        <img src="image/bang.jpg" alt="방현배" class="photo">
-    </a>
-    <a href="member/isack.html" class="team-member">
-        <img src="image/isack.jpg" alt="정이삭" class="photo">
-    </a>
-    <a href="member/jitaek.html" class="team-member">
-        <img src="https://postfiles.pstatic.net/MjAyNDA3MTZfNDMg/MDAxNzIxMTA5NDQ1MTc5.3qzR0puWPZOapQ4Lz3pjzUhgSmUKVUlQ3Q1liSQQ9gAg.3ETQ4iqVUz0qlwUGlFA1L1wPffuqy9_mVCn2zBb4R_Qg.JPEG/KakaoTalk_Photo_2024-07-16-14-56-48.jpeg?type=w773" alt="이지택" class="photo">
-    </a>
-    <a href="member/adh.html" class="team-member">
-        <img src="image/adhphoto.jpg" alt="안동환" class="photo">
-    </a>
 
-</div>
+<body>
+    <div class="header">
+        <h1>개발은처음이조</h1>
+    </div>
+    <div class="team-image">
+        <img src="image/14조.png" alt="팀 대표 이미지" class="team-image">
+    </div>
+    <div class="navigation">
+        <div Onclick="openclose1()" class="label">팀 소개</div>
+        <div class="teamintroduce" id="teamintroduce" style="display: none;">
+            <p>개발이 처음인 사람들이 모여서 프로젝트를 만듭니다!</p>
+        </div>
+        <div Onclick="openclose2()" class="label">팀 규칙</div>
+        <div class="teamrules" id="teamrules" style="display: none;">
+            <p>1. 알고리즘&코드카타(개인) 09:00 ~ 10:00</p>
+            <p>2. 개인학습 시간 : 10:00 ~ 12:00</p>
+            <p>3. 점심시간 : 12:00 ~ 13:00</p>
+            <p>4. 저녁시간 : 18:00 ~ 19:00</p>
+            <p>5. 팀 프로젝트 : 13:00 ~ 21:00</p>
+        </div>
+    </div>
+    <div class="team-members">
+        <div class="team-member">
+            <div class="position">팀장</div> 
+            <a href="member/naram.html">
+                <img src="image/naram.jpg" alt="김나람" class="photo">
+                <div class="name">김나람</div>
+            </a>
+        </div>
+        <div class="team-member">
+            <div class="position">팀원</div>
+            <a href="member/bang.html">
+                <img src="image/bang.jpg" alt="방현배" class="photo">
+                <div class="name">방현배</div>
+            </a>
+        </div>
+        <div class="team-member">
+            <div class="position">팀원</div> 
+            <a href="member/isack.html">
+                <img src="image/isack.jpg" alt="정이삭" class="photo">
+                <div class="name">정이삭</div> 
+            </a>
+        </div>
+        <div class="team-member">
+            <div class="position">팀원</div> 
+            <a href="member/jitaek.html">
+                <img src="https://postfiles.pstatic.net/MjAyNDA3MTZfNDMg/MDAxNzIxMTA5NDQ1MTc5.3qzR0puWPZOapQ4Lz3pjzUhgSmUKVUlQ3Q1liSQQ9gAg.3ETQ4iqVUz0qlwUGlFA1L1wPffuqy9_mVCn2zBb4R_Qg.JPEG/KakaoTalk_Photo_2024-07-16-14-56-48.jpeg?type=w773"
+                    alt="이지택" class="photo">
+                <div class="name">이지택</div> 
+            </a>
+        </div>
+        <div class="team-member">
+            <div class="position">팀원</div> 
+            <a href="member/adh.html">
+                <img src="image/adhphoto.jpg" alt="안동환" class="photo">
+                <div class="name">안동환</div>
+            </a>
+        </div>
+    </div>
+
+
 </body>
+
 </html>

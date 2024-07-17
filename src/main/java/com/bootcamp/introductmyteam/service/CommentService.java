@@ -2,7 +2,10 @@ package com.bootcamp.introductmyteam.service;
 
 import com.bootcamp.introductmyteam.domain.Article;
 import com.bootcamp.introductmyteam.domain.Comment;
+import com.bootcamp.introductmyteam.dto.request.CommentDeleteRequest;
 import com.bootcamp.introductmyteam.dto.request.CommentRequest;
+import com.bootcamp.introductmyteam.domain.Comment;
+import com.bootcamp.introductmyteam.dto.request.CommentUpdateRequest;
 import com.bootcamp.introductmyteam.dto.response.CommentResponse;
 import com.bootcamp.introductmyteam.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +43,26 @@ public class CommentService {
     public List<CommentResponse> findByArticleId(Long articleId) {
         return commentRepository.findByArticleIdOrderByIdDesc(articleId).stream().map(CommentResponse::from).toList();
     }
+
+    @Transactional
+    public void updateComment(Long commentId, CommentUpdateRequest commentUpdateRequest) {
+        Comment comment = commentRepository.findById(commentId).orElseThrow(RuntimeException::new);
+        validateAuthor(comment, commentUpdateRequest.getPassword());
+        comment.updateContent(commentUpdateRequest.getContent());
+    }
+
+    @Transactional
+    public void deleteComment(Long commentId, CommentDeleteRequest deleteRequest) {
+        Comment comment = commentRepository.findById(commentId).orElseThrow(RuntimeException::new);
+        validateAuthor(comment, deleteRequest.getPassword());
+        commentRepository.delete(comment);
+    }
+
+    private void validateAuthor(Comment comment, String password) {
+        if (!comment.getPassword().equals(password)) {
+            throw new RuntimeException();
+        }
+    }
+
 
 }
