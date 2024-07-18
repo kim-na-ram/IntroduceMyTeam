@@ -4,12 +4,12 @@ import com.bootcamp.introductmyteam.dto.request.CommentDeleteRequest;
 import com.bootcamp.introductmyteam.dto.request.CommentRequest;
 import com.bootcamp.introductmyteam.dto.request.CommentUpdateRequest;
 import com.bootcamp.introductmyteam.dto.response.CommentResponse;
-import com.bootcamp.introductmyteam.dto.response.CommentResponses;
 import com.bootcamp.introductmyteam.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,19 +23,22 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/{articleId}")
-    public String registerComment(@PathVariable Long articleId, CommentRequest commentRequest) {
+    public String registerComment(@PathVariable("articleId") Long articleId, CommentRequest commentRequest) {
         log.info("contents = {}", commentRequest.getContents());
         log.info("articleId = {}", articleId);
         commentService.saveComment(articleId, commentRequest);
 
-        return "redirect:/member/comment.html";
+        return "redirect:/comments/{articleId}";
     }
 
     @GetMapping("/{articleId}")
-    @ResponseBody
-    public ResponseEntity<CommentResponses> getComments(@PathVariable Long articleId) {
+    public String getComments(@PathVariable("articleId") Long articleId, Model model) {
         List<CommentResponse> commentResponses = commentService.findByArticleId(articleId);
-        return ResponseEntity.ok(CommentResponses.of(commentResponses));
+        log.info("comments = {}", commentResponses);
+
+        model.addAttribute("comments", commentResponses);
+        model.addAttribute("articleId", articleId);
+        return "/comments";
     }
 
     @PutMapping("/{commentId}")

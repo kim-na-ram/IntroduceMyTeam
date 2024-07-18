@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/common.css}" href="/css/common.css" rel="stylesheet">
+    <link th:href="@{/css/detail.css}" href="/css/detail.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<p onclick="history.back()" style="margin-top: 10px; margin-left: 20px">이전 페이지로 이동</p>
+<div class="div-main">
+
+    <div class="div-my-profile">
+        <div class="div-my-profile-img">
+            <img src="../image/naram.jpg" class="rounded img-profile">
+        </div>
+        <div class="div-my-profile-information">
+            <p class="p-my-name">김나람</p>
+            <br>
+            <p class="p-my-information">📖&nbsp;MBTI : ISTJ</p>
+            <p class="p-my-information">🔎&nbsp;최근 관심사 : 락 페스티벌! 로열 블러드를 좋아합니다💖</p>
+            <p class="p-my-information">📢&nbsp;한마디 : 다같이 힘내서 해내봅시다! ✊</p>
+        </div>
+    </div>
+    <br>
+    <hr class="hr-divider">
+    <div class="div-my-strength">
+        <p class="p-sub-heading">👋&nbsp;자기소개</p>
+        <p class="p-my-introduce">
+            이전에 안드로이드 개발자로 2년 정도 근무했습니다.<br>
+            API를 개발하거나 로직을 짜는게 좋아서 백엔드 개발자로 전향을 생각하게 되었습니다.<br>
+            백엔드 개발은 익숙하지 않아서 부족한 부분이 있을텐데 알려주시면 고치도록 하겠습니다 🙇‍♀️
+        </p>
+    </div>
+    <hr class="hr-divider">
+    <div class="div-my-strength">
+        <p class="p-sub-heading">💪&nbsp;나의 장점</p>
+        <ul class="ul-my-strength">
+            <li>해야 하는 일은 최대한 미루지 않고 꼭 해내려고 노력합니다.</li>
+            <li>하고 있는 모든 일들을 최대한 잘! 해내기 위해 노력합니다.</li>
+        </ul>
+    </div>
+    <hr class="hr-divider">
+    <div class="div-my-collaboration-style">
+        <p class="p-sub-heading">🏆️&nbsp;나의 협업 스타일</p>
+        <ul class="ul-my-collaboration-style">
+            <li>노션을 통해 내용을 정리하고, 공유하는걸 좋아하는 편입니다.</li>
+            <li>모르는 부분이 생기면 구글링을 통해 최대한 혼자 해결하려고 노력합니다</li>
+            <li>그치만 그럼에도 모를 때에는 질문을 적극 이용합니다!</li>
+        </ul>
+    </div>
+    <hr class="hr-divider">
+    <div class="diy-my-link">
+        <p class="p-sub-heading">🔗&nbsp;링크</p>
+        <a href="https://velog.io/@no1ro1m/posts" target="_blank" class="a-my-link">📚&nbsp;naram.log</a><br>
+        <a href="https://github.com/kim-na-ram" target="_blank" class="a-my-link">💻&nbsp;github</a>
+    </div>
+    <br>
+    <div class="div-comment">
+        <p class="p-sub-heading">댓글</p>
+        <form id="register-comments" action="/comments.html" th:action="@{'/comments/' + ${articleId}}" method="post">
+            <div class="row g-3">
+                <div class="col-md">
+                    <input name="nickname" class="form-control" type="text" placeholder="닉네임" aria-label="닉네임" required>
+                </div>
+                <div class="col-md">
+                    <input name="password" type="password" class="form-control" placeholder="비밀번호" required
+                           minlength="4" maxlength="8">
+                </div>
+                <div class="col-md">
+                    <button class="btn btn-dark" type="submit">등록</button>
+                </div>
+            </div>
+            <div class="row g-3" style="margin-top: 5px">
+                <div class="col-md">
+                    <input name="contents" type="text" class="form-control" placeholder="댓글 내용" required>
+                </div>
+            </div>
+        </form>
+        <br>
+        <button class="btn btn-dark" th:onclick="|location.href='@{/comments/{articleId}(articleId=${articleId})}'|">댓글 리스트로 이동</button>
+    </div>
+</div>
+</body>
+</html>
