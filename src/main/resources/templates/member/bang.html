@@ -128,8 +128,10 @@
             네이버 블로그: <a href="https://blog.naver.com/qkgkq18" target="_blank">https://blog.naver.com/qkgkq18</a>
         </div>
     </div>
-    <div class="div-comment">
-        <p class="p-sub-heading">댓글</p>
+    <br>
+    <div class="attributes-section">
+        <div class="attribute">
+            <div class="label">댓글</div>
         <form id="register-comments" action="/comments.html" th:action="@{'/comments/' + ${articleId}}" method="post">
             <div class="row g-3">
                 <div class="col-md">
@@ -153,6 +155,7 @@
         <button class="btn btn-secondary" th:onclick="|location.href='@{/comments/{articleId}(articleId=${articleId})}'|">
             댓글 목록으로 이동
         </button>
+        </div>
     </div>
 </div>
 </body>

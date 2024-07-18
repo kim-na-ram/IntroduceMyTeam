@@ -20,7 +20,7 @@
         }
 
         .box {
-            margin: 50px auto 50px 50px;
+            margin: 50px;
         }
     </style>
 </head>
@@ -57,19 +57,22 @@
             <div class="div-my-strength">
                 <li>나의 협업 스타일</li>
                 <p class="p-my-introduce">
-                    일이 잘 안돼도 긍정적으로 생각합니다<br>
+                    일이 잘 안돼도 긍정적으로 생각합니다<br><br>
+
 
                 </p>
             </div>
             <hr class="hr-divider">
             <div class="diy-my-link">
-                <p class="p-sub-heading">링크</p>
+                <h3>링크</h3>
                 <a href="https://diary-3.tistory.com/" target="_blank" class="a-my-link">tistory</a><br>
                 <a href="https://github.com/jitaeklee" target="_blank" class="a-my-link">github</a>
             </div>
         </div>
+        <br/>
+        <hr class="hr-divider">
         <div class="div-comment">
-            <p class="p-sub-heading">댓글</p>
+            <h3>댓글</h3>
             <form id="register-comments" action="/comments.html" th:action="@{'/comments/' + ${articleId} + '/comment'}"
                   method="post">
                 <div class="row g-3">

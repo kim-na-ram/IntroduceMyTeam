@@ -7,20 +7,6 @@
     font-style: normal;
 }
 
-body {
-    padding-top: 20px;
-    padding-bottom: 50px;
-}
-
-.div-main {
-    width: 60%;
-    height: 100%;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    align-content: center;
-}
-
 .hr-divider {
     width: 90%;
     height : 3px;
