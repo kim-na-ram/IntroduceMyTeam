@@ -10,12 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Slf4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-    private static Map<String, Long> page = new HashMap<String, Long>() {{
+    private static Map<String, Long> page = new HashMap() {{
         put("naram", 1l);
         put("bang", 2l);
         put("adh", 3l);
@@ -23,11 +24,20 @@ public class MemberController {
         put("jitaek", 5l);
     }};
 
-    // pageName 대로 articleId를 전달
+    // pageName 를 기반으로 articleId 를 전달
     @GetMapping("/{pageName}")
-    public ModelAndView pageNumbering(@PathVariable("pageName") String pageName) {
+    public ModelAndView nameToPage(@PathVariable("pageName") String pageName) {
         ModelAndView mav = new ModelAndView("member/"+pageName);
         mav.addObject("articleId", page.get(pageName));
+        return mav;
+    }
+
+    // articleId 를 기반으로 pageName 을 찾음
+    @GetMapping("/{articleId}/find")
+    public ModelAndView pageToName(@PathVariable("articleId") Long articleId) {
+        String name = page.entrySet().stream().filter(i -> Objects.equals(i.getValue(), articleId)).findFirst().get().getKey();
+        ModelAndView mav = new ModelAndView("redirect:/member/"+name);
+        mav.addObject("articleId", articleId);
         return mav;
     }
 }

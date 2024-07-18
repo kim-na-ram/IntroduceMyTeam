@@ -8,7 +8,7 @@
           href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<p onclick="history.back()" style="margin-top: 10px; margin-left: 20px">이전 페이지로 이동</p>
+<p th:onclick="|location.href='@{/}'|" style="margin-top: 10px; margin-left: 20px">이전 페이지로 이동</p>
 <div class="div-main">
 
     <div class="div-my-profile">
@@ -74,12 +74,12 @@
             </div>
             <div class="row g-3" style="margin-top: 5px">
                 <div class="col-md">
-                    <input name="contents" type="text" class="form-control" placeholder="댓글 내용" required>
+                    <textarea name="contents"  type="text" class="form-control" placeholder="댓글 내용" required></textarea>
                 </div>
             </div>
         </form>
         <br>
-        <button class="btn btn-dark" th:onclick="|location.href='@{/comments/{articleId}(articleId=${articleId})}'|">댓글 리스트로 이동</button>
+        <button class="btn btn-dark" th:onclick="|location.href='@{/comments/{articleId}(articleId=${articleId})}'|">댓글 목록으로 이동</button>
     </div>
 </div>
 </body>

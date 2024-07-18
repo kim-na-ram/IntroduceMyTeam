@@ -38,7 +38,7 @@ public class CommentController {
 
         model.addAttribute("comments", commentResponses);
         model.addAttribute("articleId", articleId);
-        return "/comments";
+        return "comments";
     }
 
     @PutMapping("/{commentId}")
@@ -48,10 +48,26 @@ public class CommentController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{commentId}")
-    @ResponseBody
-    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId, @RequestBody CommentDeleteRequest deleteRequest) {
-        commentService.deleteComment(commentId, deleteRequest);
-        return ResponseEntity.noContent().build();
+    @GetMapping("/{articleId}/{commentId}")
+    public String toDeletePage(@PathVariable("articleId") Long articleId, @PathVariable("commentId") Long commentId, Model model) {
+        model.addAttribute("articleId", articleId);
+        model.addAttribute("commentId", commentId);
+        return "commentDelete";
+    }
+
+    @DeleteMapping("/{articleId}/{commentId}")
+    public String deleteComment(@PathVariable("articleId") Long articleId, @PathVariable("commentId") Long commentId, CommentDeleteRequest deleteRequest, Model model) {
+        log.info("password = {}", deleteRequest.getPassword());
+
+        // password 가 맞는지 확인하고 아니라면
+        if(!commentService.deleteComment(commentId, deleteRequest)) {
+            model.addAttribute("message", "비밀번호가 틀렸습니다.");
+            model.addAttribute("redirectUri", "/comments/"+articleId);
+
+            // alert 표시
+            return "/alert";
+        }
+
+        return "redirect:/comments/{articleId}";
     }
 }

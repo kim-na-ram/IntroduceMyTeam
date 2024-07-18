@@ -10,7 +10,7 @@
 
     <style>
         .photo {
-            background-image: url('https://postfiles.pstatic.net/MjAyNDA3MTZfNDMg/MDAxNzIxMTA5NDQ1MTc5.3qzR0puWPZOapQ4Lz3pjzUhgSmUKVUlQ3Q1liSQQ9gAg.3ETQ4iqVUz0qlwUGlFA1L1wPffuqy9_mVCn2zBb4R_Qg.JPEG/KakaoTalk_Photo_2024-07-16-14-56-48.jpeg?type=w773');
+            background-image: url('/image/jitaek.jpg');
             background-position: center;
             background-size: cover;
             width: 200px;
@@ -70,7 +70,7 @@
         </div>
         <div class="div-comment">
             <p class="p-sub-heading">댓글</p>
-            <form id="register-comments" action="/comments.html" th:action="@{'/comments/' + ${articleId}}"
+            <form id="register-comments" action="/comments.html" th:action="@{'/comments/' + ${articleId} + '/comment'}"
                   method="post">
                 <div class="row g-3">
                     <div class="col-md">
@@ -87,13 +87,13 @@
                 </div>
                 <div class="row g-3" style="margin-top: 5px">
                     <div class="col-md">
-                        <input name="contents" type="text" class="form-control" placeholder="댓글 내용" required>
+                        <textarea name="contents"  type="text" class="form-control" placeholder="댓글 내용" required></textarea>
                     </div>
                 </div>
             </form>
             <br>
-            <button class="btn btn-dark" th:onclick="|location.href='@{/comments/{articleId}(articleId=${articleId})}'|">
-                댓글 목록 이동
+            <button class="btn btn-dark" th:onclick="|location.href='@{/comments/commentList/{articleId}(articleId=${articleId})}'|">
+                댓글 목록으로 이동
             </button>
         </div>
     </div>

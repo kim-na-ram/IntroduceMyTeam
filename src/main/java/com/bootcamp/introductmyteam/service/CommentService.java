@@ -52,16 +52,17 @@ public class CommentService {
     }
 
     @Transactional
-    public void deleteComment(Long commentId, CommentDeleteRequest deleteRequest) {
+    public boolean deleteComment(Long commentId, CommentDeleteRequest deleteRequest) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(RuntimeException::new);
-        validateAuthor(comment, deleteRequest.getPassword());
-        commentRepository.delete(comment);
+        if(validateAuthor(comment, deleteRequest.getPassword())) {
+            commentRepository.delete(comment);
+            return true;
+        } else
+            return false;
     }
 
-    private void validateAuthor(Comment comment, String password) {
-        if (!comment.getPassword().equals(password)) {
-            throw new RuntimeException();
-        }
+    private boolean validateAuthor(Comment comment, String password) {
+        return comment.getPassword().equals(password);
     }
 
 
