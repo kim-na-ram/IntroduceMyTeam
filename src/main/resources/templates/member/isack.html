@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="container">
-    <p onclick="history.back()" style="margin-top: 10px; margin-left: 20px">이전 페이지로 이동</p>
+    <p th:onclick="|location.href='@{/}'|" style="margin-top: 10px; margin-left: 20px">이전 페이지로 이동</p>
     <div class="row mb-5 mt-5">
         <div class="col-4">
             <img src="../image/isack.jpg" style="width: 12rem">
