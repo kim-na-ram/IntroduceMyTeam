@@ -65,7 +65,7 @@ public class CommentController {
             model.addAttribute("redirectUri", "/comments/"+articleId);
 
             // alert 표시
-            return "/alert";
+            return "common/alert";
         }
 
         return "redirect:/comments/{articleId}";
