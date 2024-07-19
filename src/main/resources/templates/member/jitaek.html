@@ -73,8 +73,7 @@
         <hr class="hr-divider">
         <div class="div-comment">
             <h3>댓글</h3>
-            <form id="register-comments" action="/comments.html" th:action="@{'/comments/' + ${articleId} + '/comment'}"
-                  method="post">
+            <form id="register-comments" action="/comments.html" th:action="@{'/comments/' + ${articleId}}" method="post">
                 <div class="row g-3">
                     <div class="col-md">
                         <input name="nickname" class="form-control" type="text" placeholder="닉네임" aria-label="닉네임"
